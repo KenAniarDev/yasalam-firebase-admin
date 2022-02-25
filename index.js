@@ -38,7 +38,11 @@ const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(
   cors({
-    origin: ['https://yasalam.vercel.app', 'https://yasalamae.vercel.app'],
+    origin: [
+      'https://yasalam.vercel.app',
+      'https://yasalamae.vercel.app',
+      'http://localhost:3000',
+    ],
   })
 );
 app.options(cors());
