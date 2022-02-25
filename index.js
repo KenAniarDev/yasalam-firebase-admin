@@ -36,7 +36,6 @@ const {
 const port = process.env.PORT || 8000;
 
 // middlewares
-app.use(express.json());
 app.use(
   cors({
     origin: [
@@ -58,7 +57,15 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // routes
+// ===========================================================================
+//  PAYMENT
+// ===========================================================================
+app.route('/api/member/paid').post((req, res) => updateMember(req, res));
+// ===========================================================================
+//
+// ===========================================================================
 app.route('/test').get((req, res) => res.send('test'));
+app.use(express.json());
 // ===========================================================================
 // ADMIN
 // ===========================================================================
@@ -116,17 +123,12 @@ app
 // TRANSACTIONS
 // ===========================================================================
 
-// ===========================================================================
-//  PAYMENT
-// ===========================================================================
-app.route('/api/member/paid').post((req, res) => updateMember(req, res));
-
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });
 
 app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+  next(new Error(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
 app.use((err, req, res, next) => {
