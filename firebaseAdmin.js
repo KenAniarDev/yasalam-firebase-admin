@@ -625,6 +625,7 @@ const addRegisterTransaction = async (member) => {
 };
 
 const checkEmailLogin = async (req, res) => {
+  console.log('check');
   try {
     let query = db.collection('members').where('email', '==', req.body.email);
     const querySnapshot = await query.get();
@@ -653,6 +654,7 @@ const checkEmailLogin = async (req, res) => {
           'Your account is currently login to different device. Please Contact the YaSalam'
         );
     }
+    res.status(200).send(true);
   } catch (error) {
     console.log('error', error);
     return res.status(500).send('Server error. please try again');
