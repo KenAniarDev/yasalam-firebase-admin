@@ -107,7 +107,9 @@ app
 app
   .route('/api/member/activate-with-referral')
   .post((req, res) => updateWithReferral(req, res));
-app.route('/api/member/get-info').post((req, res) => getMemberInfo(req, res));
+app
+  .route('/api/member/get-info/:id')
+  .get((req, res) => getMemberInfo(req, res));
 
 // ===========================================================================
 // TRANSACTIONS
@@ -125,5 +127,6 @@ app.all('*', (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  console.log(error);
   res.status(500).send('Server Error');
 });

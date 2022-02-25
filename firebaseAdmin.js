@@ -888,9 +888,15 @@ const updateWithReferral = async (req, res) => {
 };
 const getMemberInfo = async (req, res) => {
   try {
-    const member = await getMember(req.query.id);
+    const member = await getMember(req.params.id);
     if (!member) return res.status(404).send('User not found');
-    return res.send(member);
+    return res.send({
+      name: member.name,
+      email: member.email,
+      id: member.id,
+      points: member.points,
+      savings: member.savings,
+    });
   } catch (error) {
     return res.status(404).send('User not found');
   }
