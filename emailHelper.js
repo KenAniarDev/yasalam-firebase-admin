@@ -12,7 +12,7 @@ module.exports.mailHelper = async (options) => {
     // },
     host: 'smtp.hostinger.com',
     port: 465,
-    secure: true, // use SSL
+    secure: false, // use SSL
     auth: {
       user: 'confirmation@yasalamae.ae',
       pass: '#YaSalam2021',
