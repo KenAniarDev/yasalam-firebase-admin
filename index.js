@@ -31,6 +31,7 @@ const {
   deleteFavorite,
   updateWithReferral,
   getMemberInfo,
+  updateMember,
 } = require('./firebaseAdmin');
 const port = process.env.PORT || 8000;
 
@@ -116,8 +117,10 @@ app
 // ===========================================================================
 
 // ===========================================================================
-//
+//  PAYMENT
 // ===========================================================================
+app.route('/api/member/paid').post((req, res) => updateMember(req, res));
+
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });
