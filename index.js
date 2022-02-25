@@ -116,6 +116,10 @@ app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });
 
+app.all('*', (req, res, next) => {
+  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+});
+
 app.use((err, req, res, next) => {
   res.status(500).send('Server Error');
 });

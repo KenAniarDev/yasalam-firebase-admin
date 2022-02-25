@@ -637,15 +637,8 @@ const checkEmailLogin = async (req, res) => {
     if (!member.isPaid) {
       return res.status(400).send('Please pay your membership first');
     }
-    // check if member is activated
-    if (member.isActivate) {
-      return res
-        .status(400)
-        .send(
-          'Your account is currently login to different device. Please Contact the YaSalam'
-        );
-    }
 
+    // check if membership expired
     const expiryDate = moment(member.expiryDate);
     const now = moment();
 
@@ -653,6 +646,15 @@ const checkEmailLogin = async (req, res) => {
       return res.status(400).send('Your membership expired');
     } else {
       return res.status(200).send('success');
+    }
+
+    // check if member is activated
+    if (member.isActivate) {
+      return res
+        .status(400)
+        .send(
+          'Your account is currently login to different device. Please Contact the YaSalam'
+        );
     }
   } catch (error) {
     console.log('error', error);
