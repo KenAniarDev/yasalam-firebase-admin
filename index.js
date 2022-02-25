@@ -37,6 +37,7 @@ const port = process.env.PORT || 8000;
 
 // middlewares
 app.use(express.json());
+
 app.use(
   cors({
     origin: [
@@ -118,11 +119,6 @@ app
 // ===========================================================================
 // TRANSACTIONS
 // ===========================================================================
-
-// ===========================================================================
-//  PAYMENT
-// ===========================================================================
-app.route('/api/member/paid').post((req, res) => updateMember(req, res));
 
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
