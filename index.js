@@ -36,6 +36,7 @@ const {
 const port = process.env.PORT || 8000;
 
 // middlewares
+app.use(express.json());
 app.use(
   cors({
     origin: [
@@ -61,7 +62,6 @@ if (process.env.NODE_ENV === 'development') {
 //
 // ===========================================================================
 app.route('/test').get((req, res) => res.send('test'));
-app.use(express.json());
 // ===========================================================================
 // ADMIN
 // ===========================================================================
