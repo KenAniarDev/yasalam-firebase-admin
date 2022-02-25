@@ -128,6 +128,6 @@ app.all('*', (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  console.log(error);
+  console.log(err);
   res.status(500).send('Server Error');
 });
