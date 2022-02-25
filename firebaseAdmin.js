@@ -644,10 +644,7 @@ const checkEmailLogin = async (req, res) => {
 
     if (now > expiryDate) {
       return res.status(400).send('Your membership expired');
-    } else {
-      return res.status(200).send('success');
     }
-
     // check if member is activated
     if (member.isActivate) {
       return res
