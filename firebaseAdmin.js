@@ -3,10 +3,10 @@ const { getAuth, doc } = require('firebase-admin/auth');
 const { generateRandomStrings } = require('./functionHelpers');
 const { mailHelper } = require('./emailHelper');
 const moment = require('moment');
-import Stripe from 'stripe';
-import { buffer } from 'micro';
+const Stripe = require('stripe');
+const { buffer } = require('micro');
 
-export const config = {
+const config = {
   api: {
     bodyParser: false,
   },
