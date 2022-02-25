@@ -58,6 +58,9 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // routes
+// ===========================================================================
+//
+// ===========================================================================
 app.route('/test').get((req, res) => res.send('test'));
 // ===========================================================================
 // ADMIN
@@ -126,10 +129,10 @@ app.listen(port, () => {
 });
 
 app.all('*', (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
+  next(new Error(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
 app.use((err, req, res, next) => {
-  console.log(error);
+  console.log(err);
   res.status(500).send('Server Error');
 });

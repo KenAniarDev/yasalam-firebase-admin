@@ -3,12 +3,19 @@ const nodemailer = require('nodemailer');
 module.exports.mailHelper = async (options) => {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: false,
+    // host: process.env.SMTP_HOST,
+    // port: process.env.SMTP_PORT,
+    // secure: true,
+    // auth: {
+    //   user: process.env.SMTP_USER,
+    //   pass: process.env.SMTP_PASSWORD,
+    // },
+    host: 'smtp.hostinger.com',
+    port: 465,
+    secure: true, // use SSL
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASSWORD,
+      user: 'confirmation@yasalamae.ae',
+      pass: '#YaSalam2021',
     },
   });
 
