@@ -31,7 +31,6 @@ const {
   deleteFavorite,
   updateWithReferral,
   getMemberInfo,
-  updateMember,
 } = require('./firebaseAdmin');
 const port = process.env.PORT || 8000;
 
