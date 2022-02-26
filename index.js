@@ -44,6 +44,7 @@ app.use(
       'https://yasalamae.vercel.app',
       'http://localhost:3000',
       'https://yasalamae-dg5gy.ondigitalocean.app',
+      'https://yasalamae.ae',
     ],
   })
 );
