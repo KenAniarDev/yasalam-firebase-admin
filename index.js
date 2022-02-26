@@ -43,6 +43,7 @@ app.use(
       'https://yasalam.vercel.app',
       'https://yasalamae.vercel.app',
       'http://localhost:3000',
+      'https://yasalamae-dg5gy.ondigitalocean.app',
     ],
   })
 );
