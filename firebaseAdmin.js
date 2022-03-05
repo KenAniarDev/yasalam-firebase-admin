@@ -738,6 +738,7 @@ const buyWithPoints = async (req, res) => {
         .update({ points: member.points - product.data().points });
 
       await db.collection('vouchers').add({
+        memberEmail: member.email,
         memberId: member.id,
         memberName: member.name,
         name: product.data().name,
