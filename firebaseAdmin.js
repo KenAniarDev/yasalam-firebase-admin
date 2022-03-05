@@ -617,7 +617,7 @@ const addRegisterTransaction = async (member) => {
     name: member.name,
     userType: member.userType,
     amountPaid: member.amountPaid,
-    createdAt: moment(date).unix(),
+    createdAt: date,
     year,
     month,
     day,
