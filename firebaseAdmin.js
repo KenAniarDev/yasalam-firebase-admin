@@ -471,6 +471,52 @@ const resendPaymentEmail = async (req, res) => {
     return res.status(404).send(false);
   }
 };
+const resendPaymentEmailById = async (req, res) => {
+  try {
+    let query = db.collection('members').doc(req.body.id);
+    const querySnapshot = await query.get();
+    const member = {
+      id: querySnapshot.id,
+      ...querySnapshot.data(),
+    };
+
+    const link = `${req.headers.origin}/api/payment/${member.id}`;
+
+    const message = `Hi ${member.name}! Thank you for availing Yasalam Membership.  You may continue to the payment of your membership in this link: ${link}`;
+    const htmlMessage = `Dear  ${member.name}!
+     <br /> <br />
+     Your one click away!!!
+     Your Yasalam Membership registration is complete.<br>
+     Please click on the link below to proceed and make your membership payment.<br><br>
+
+     <a href="${link}"> ${link}</a>
+
+     <br><br>
+
+     Feel free to contact our team if you need any help or support. <br/>
+     support@yasalamae.ae.
+
+     <br><br>
+
+     Sincerely,
+     <br>
+     Yasalam Team`;
+
+    const mailOptions = {
+      from: 'confirmation@yasalamae.ae',
+      to: member.email,
+      subject: `Welcome to Yasalam ${member.userType} Membership - Account Activation`,
+      text: message,
+      html: htmlMessage,
+    };
+    mailHelper(mailOptions);
+
+    return res.status(201).send(true);
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send(false);
+  }
+};
 
 const getMember = async (id) => {
   try {
@@ -586,7 +632,27 @@ const memberPaid = async (email, update) => {
     return new Error('error updating user');
   }
 };
+const deleteMember = async (req, res) => {
+  try {
+    const decodedToken = await getAuth().verifyIdToken(req.body.idToken);
+    const user = await getAuth().getUser(decodedToken.uid);
 
+    if (!user.customClaims.admin) {
+      return res.status(403).send('Unauthorize');
+    }
+
+    var doc = await db.collection('members').doc(req.body.id).get();
+
+    if (!doc.exists) {
+      return res.status(404).send('Member not found');
+    }
+    await db.collection('members').doc(req.body.id).delete();
+    res.send('deleted');
+  } catch (error) {
+    console.log(error);
+    res.status(400).send('Server Error. Please try again');
+  }
+};
 const checkIfReferralExist = async (id) => {
   try {
     let doc = await db.collection('referrals').doc(id).get();
@@ -757,6 +823,40 @@ const buyWithPoints = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(400).send('Error please Try again');
+  }
+};
+const claimVoucher = async (req, res) => {
+  try {
+    const decodedToken = await getAuth().verifyIdToken(req.body.idToken);
+    const user = await getAuth().getUser(decodedToken.uid);
+
+    if (!user.customClaims.admin) {
+      return res.status(403).send('Unauthorize');
+    }
+
+    await db.collection('vouchers').doc(req.body.id).update({ claimed: true });
+
+    res.status(200).send('Success');
+  } catch (error) {
+    console.log(error);
+    res.status(400).send('Server Error. Please try again');
+  }
+};
+const unclaimVoucher = async (req, res) => {
+  try {
+    const decodedToken = await getAuth().verifyIdToken(req.body.idToken);
+    const user = await getAuth().getUser(decodedToken.uid);
+
+    if (!user.customClaims.admin) {
+      return res.status(403).send('Unauthorize');
+    }
+
+    await db.collection('vouchers').doc(req.body.id).update({ claimed: false });
+
+    res.status(200).send('Success');
+  } catch (error) {
+    console.log(error);
+    res.status(400).send('Server Error. Please try again');
   }
 };
 const addChild = async (req, res) => {
@@ -933,4 +1033,8 @@ module.exports = {
   deleteFavorite,
   updateWithReferral,
   getMemberInfo,
+  deleteMember,
+  claimVoucher,
+  unclaimVoucher,
+  resendPaymentEmailById,
 };

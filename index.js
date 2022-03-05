@@ -31,6 +31,10 @@ const {
   deleteFavorite,
   updateWithReferral,
   getMemberInfo,
+  deleteMember,
+  claimVoucher,
+  unclaimVoucher,
+  resendPaymentEmailById,
 } = require('./firebaseAdmin');
 const port = process.env.PORT || 8000;
 
@@ -89,12 +93,16 @@ app
 // ===========================================================================
 app.route('/api/member/:email').get((req, res) => checkIfMemberExist(req, res));
 app.route('/api/member/create').post((req, res) => addMember(req, res));
+app.route('/api/member/delete').post((req, res) => deleteMember(req, res));
 app
   .route('/api/member/create-secondary')
   .post((req, res) => addSecondary(req, res));
 app
   .route('/api/member/resend-payment-link')
   .post((req, res) => resendPaymentEmail(req, res));
+app
+  .route('/api/member/resend-payment-link-id')
+  .post((req, res) => resendPaymentEmailById(req, res));
 app
   .route('/api/member/get-by-email-otp')
   .post((req, res) => getMemberByEmailOTP(req, res));
@@ -116,7 +124,11 @@ app
 app
   .route('/api/member/get-info/:id')
   .get((req, res) => getMemberInfo(req, res));
-
+// ===========================================================================
+// Vouchers
+// ===========================================================================
+app.route('/api/vouchers/claim').post((req, res) => claimVoucher(req, res));
+app.route('/api/vouchers/unclaim').post((req, res) => unclaimVoucher(req, res));
 // ===========================================================================
 // TRANSACTIONS
 // ===========================================================================
