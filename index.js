@@ -49,6 +49,7 @@ app.use(
       'http://localhost:3000',
       'https://yasalamae-dg5gy.ondigitalocean.app',
       'https://yasalamae.ae',
+      'https://www.yasalamae.ae',
     ],
   })
 );
