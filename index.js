@@ -50,6 +50,8 @@ app.use(
       'https://yasalamae-dg5gy.ondigitalocean.app',
       'https://yasalamae.ae',
       'https://www.yasalamae.ae',
+      'https://royalmembership.ae',
+      'https://www.royalmembership.ae',
     ],
   })
 );
