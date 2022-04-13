@@ -768,6 +768,8 @@ const updateActivate = async (email) => {
     }
     const update = { isActivate: true };
 
+    if (member.email === 'almaisaris@gmail.com') return member;
+
     await db.collection('members').doc(querySnapshot.docs[0].id).update(update);
 
     return member;
