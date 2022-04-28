@@ -7,8 +7,8 @@ module.exports.mailHelper = async (options) => {
     port: 465,
     secure: true, // use SSL
     auth: {
-      user: 'confirmation@yasalamae.ae',
-      pass: '#YaSalam2021',
+      user: 'confirmation@royalmembership.ae',
+      pass: '#Hostinger2022',
     },
   });
 

@@ -255,11 +255,11 @@ const addMember = async (req, res) => {
 
     const link = `${req.headers.origin}/api/payment/${docRef.id}`;
 
-    const message = `Hi ${name}! Thank you for availing Yasalam Membership.  You may continue to the payment of your membership in this link: ${link}`;
+    const message = `Hi ${name}! Thank you for availing Royal Membership.  You may continue to the payment of your membership in this link: ${link}`;
     const htmlMessage = `Dear  ${name}!
    <br /> <br />
    Your one click away!!!
-   Your Yasalam Membership registration is complete.<br>
+   Your Royal Membership registration is complete.<br>
    Please click on the link below to proceed and make your membership payment.<br><br>
 
    <a href="${link}"> ${link}</a>
@@ -267,18 +267,18 @@ const addMember = async (req, res) => {
    <br><br>
 
    Feel free to contact our team if you need any help or support. <br/>
-   support@yasalamae.ae.
+   info@royalmembership.ae
 
    <br><br>
 
    Sincerely,
    <br>
-   Yasalam Team`;
+   Royal Team`;
 
     const mailOptions = {
-      from: 'confirmation@yasalamae.ae',
+      from: 'confirmation@royalmembership.ae',
       to: req.body.email,
-      subject: `Welcome to Yasalam ${userType} Membership - Account Activation`,
+      subject: `Welcome to Royal ${userType} Membership - Account Activation`,
       text: message,
       html: htmlMessage,
     };
@@ -361,55 +361,55 @@ const addSecondary = async (req, res) => {
     });
 
     const message = `Hi ${name}! <br />
-      Welcome to YaSalam  <br /> <br />
+      Welcome to Royal  <br /> <br />
 
       UAE’s leading lifestyle membership platform. <br/> <br/>
 
-      Your YaSalam account OTP is ${otp}<br/>
+      Your Royal account OTP is ${otp}<br/>
       Please don’t share your one time password (OTP) with anyone.<br/> <br/>
 
-      Get started and be “YaSalam” in 3 easy steps <br/><br/>
-      1-	Download YaSalam App
+      Get started and be “Royal” in 3 easy steps <br/><br/>
+      1-	Download Royal App
       2-	Login by using your email and your OTP
       3-	Start Exploring and enjoy.
 
       <br/><br/>
       Please feel free to contact our support team if you need any help <br/>
-       support@yasalamae.ae .
+      info@royalmembership.ae.
 
        <br/><br/><br/>
-       Stay healthy and YaSalam
+       Stay healthy and Royal
 
        <br/><br/>
       Sincerely,  <br/>
-      YaSalam Team`;
+      Royal Team`;
     const htmlMessage = `Hi ${name}! <br />
-      Welcome to YaSalam  <br /> <br />
+      Welcome to Royal  <br /> <br />
 
       UAE’s leading lifestyle membership platform. <br/> <br/>
 
-      Your YaSalam account OTP is ${otp}<br/>
+      Your Royal account OTP is ${otp}<br/>
       Please don’t share your one time password (OTP) with anyone.<br/> <br/>
 
-      Get started and be “YaSalam” in 3 easy steps <br/><br/>
-      1-	Download YaSalam App
+      Get started and be “Royal” in 3 easy steps <br/><br/>
+      1-	Download Royal App
       2-	Login by using your email and your OTP
       3-	Start Exploring and enjoy.
 
       <br/><br/>
       Please feel free to contact our support team if you need any help <br/>
-       support@yasalamae.ae .
+      info@royalmembership.ae.
 
        <br/><br/><br/>
-       Stay healthy and YaSalam
+       Stay healthy and Royal
 
        <br/><br/>
       Sincerely,  <br/>
-      YaSalam Team`;
+      Royal Team`;
     const mailOptions = {
-      from: 'confirmation@yasalamae.ae',
+      from: 'confirmation@royalmembership.ae',
       to: email,
-      subject: `Welcome to Yasalam Family Membership - Account Activation`,
+      subject: `Welcome to Royal Family Membership - Account Activation`,
       text: message,
       html: htmlMessage,
     };
@@ -437,11 +437,11 @@ const resendPaymentEmail = async (req, res) => {
 
     const link = `${req.headers.origin}/api/payment/${member.id}`;
 
-    const message = `Hi ${member.name}! Thank you for availing Yasalam Membership.  You may continue to the payment of your membership in this link: ${link}`;
+    const message = `Hi ${member.name}! Thank you for availing Royal Membership.  You may continue to the payment of your membership in this link: ${link}`;
     const htmlMessage = `Dear  ${member.name}!
      <br /> <br />
      Your one click away!!!
-     Your Yasalam Membership registration is complete.<br>
+     Your Royal Membership registration is complete.<br>
      Please click on the link below to proceed and make your membership payment.<br><br>
 
      <a href="${link}"> ${link}</a>
@@ -449,18 +449,18 @@ const resendPaymentEmail = async (req, res) => {
      <br><br>
 
      Feel free to contact our team if you need any help or support. <br/>
-     support@yasalamae.ae.
+     info@royalmembership.ae.
 
      <br><br>
 
      Sincerely,
      <br>
-     Yasalam Team`;
+     Royal Team`;
 
     const mailOptions = {
-      from: 'confirmation@yasalamae.ae',
+      from: 'confirmation@royalmembership.ae',
       to: req.body.email,
-      subject: `Welcome to Yasalam ${member.userType} Membership - Account Activation`,
+      subject: `Welcome to Royal ${member.userType} Membership - Account Activation`,
       text: message,
       html: htmlMessage,
     };
@@ -482,11 +482,11 @@ const resendPaymentEmailById = async (req, res) => {
 
     const link = `${req.headers.origin}/api/payment/${member.id}`;
 
-    const message = `Hi ${member.name}! Thank you for availing Yasalam Membership.  You may continue to the payment of your membership in this link: ${link}`;
+    const message = `Hi ${member.name}! Thank you for availing Royal Membership.  You may continue to the payment of your membership in this link: ${link}`;
     const htmlMessage = `Dear  ${member.name}!
      <br /> <br />
      Your one click away!!!
-     Your Yasalam Membership registration is complete.<br>
+     Your Royal Membership registration is complete.<br>
      Please click on the link below to proceed and make your membership payment.<br><br>
 
      <a href="${link}"> ${link}</a>
@@ -494,18 +494,18 @@ const resendPaymentEmailById = async (req, res) => {
      <br><br>
 
      Feel free to contact our team if you need any help or support. <br/>
-     support@yasalamae.ae.
+     info@royalmembership.ae.
 
      <br><br>
 
      Sincerely,
      <br>
-     Yasalam Team`;
+     Royal Team`;
 
     const mailOptions = {
-      from: 'confirmation@yasalamae.ae',
+      from: 'confirmation@royalmembership.ae',
       to: member.email,
-      subject: `Welcome to Yasalam ${member.userType} Membership - Account Activation`,
+      subject: `Welcome to Royal ${member.userType} Membership - Account Activation`,
       text: message,
       html: htmlMessage,
     };
@@ -572,55 +572,55 @@ const memberPaid = async (email, update) => {
     await db.collection('members').doc(querySnapshot.docs[0].id).update(update);
 
     const message = `Hi ${member.name}! <br />
-      Welcome to YaSalam  <br /> <br />
+      Welcome to Royal  <br /> <br />
 
       UAE’s leading lifestyle membership platform. <br/> <br/>
 
-      Your YaSalam account OTP is ${member.otp}<br/>
+      Your Royal account OTP is ${member.otp}<br/>
       Please don’t share your one time password (OTP) with anyone.<br/> <br/>
 
-      Get started and be “YaSalam” in 3 easy steps <br/><br/>
-      1-	Download YaSalam App
+      Get started and be “Royal” in 3 easy steps <br/><br/>
+      1-	Download Royal App
       2-	Login by using your email and your OTP
       3-	Start Exploring and enjoy.
 
       <br/><br/>
       Please feel free to contact our support team if you need any help <br/>
-       support@yasalamae.ae .
+      info@royalmembership.ae.
 
        <br/><br/><br/>
-       Stay healthy and YaSalam
+       Stay healthy and Royal
 
        <br/><br/>
       Sincerely,  <br/>
-      YaSalam Team`;
+      Royal Team`;
     const htmlMessage = `Hi ${member.name}! <br />
-      Welcome to YaSalam  <br /> <br />
+      Welcome to Royal  <br /> <br />
 
       UAE’s leading lifestyle membership platform. <br/> <br/>
 
-      Your YaSalam account OTP is ${member.otp}<br/>
+      Your Royal account OTP is ${member.otp}<br/>
       Please don’t share your one time password (OTP) with anyone.<br/> <br/>
 
-      Get started and be “YaSalam” in 3 easy steps <br/><br/>
-      1-	Download YaSalam App
+      Get started and be “Royal” in 3 easy steps <br/><br/>
+      1-	Download Royal App
       2-	Login by using your email and your OTP
       3-	Start Exploring and enjoy.
 
       <br/><br/>
       Please feel free to contact our support team if you need any help <br/>
-       support@yasalamae.ae .
+      info@royalmembership.ae.
 
        <br/><br/><br/>
-       Stay healthy and YaSalam
+       Stay healthy and Royal
 
        <br/><br/>
       Sincerely,  <br/>
-      YaSalam Team`;
+      Royal Team`;
     const mailOptions = {
-      from: 'confirmation@yasalamae.ae',
+      from: 'confirmation@royalmembership.ae',
       to: email,
-      subject: `Welcome to Yasalam ${member.userType} Membership - Account Activation`,
+      subject: `Welcome to Royal ${member.userType} Membership - Account Activation`,
       text: message,
       html: htmlMessage,
     };
@@ -717,7 +717,7 @@ const checkEmailLogin = async (req, res) => {
       return res
         .status(400)
         .send(
-          'Your account is currently login to different device. Please Contact the YaSalam'
+          'Your account is currently login to different device. Please Contact the Royal'
         );
     }
     res.status(200).send(true);
