@@ -35,6 +35,7 @@ const {
   claimVoucher,
   unclaimVoucher,
   resendPaymentEmailById,
+  resetMember,
 } = require('./firebaseAdmin');
 const port = process.env.PORT || 8000;
 
@@ -70,7 +71,7 @@ if (process.env.NODE_ENV === 'development') {
 // ===========================================================================
 //
 // ===========================================================================
-app.route('/test').get((req, res) => res.send('test update na'));
+app.route('/test').get((req, res) => res.send('test update na may 5 6:52pm'));
 // ===========================================================================
 // ADMIN
 // ===========================================================================
@@ -113,6 +114,7 @@ app
   .route('/api/member/check-email-login')
   .post((req, res) => checkEmailLogin(req, res));
 app.route('/api/member/otp-login').post((req, res) => otpLogin(req, res));
+app.route('/api/member/reset').post((req, res) => resetMember(req, res));
 app
   .route('/api/member/buy-with-points')
   .post((req, res) => buyWithPoints(req, res));

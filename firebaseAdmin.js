@@ -529,6 +529,19 @@ const getMember = async (id) => {
     return null;
   }
 };
+const resetMember = async (req, res) => {
+  try {
+    const update = {
+      otp: generateRandomStrings(6, 'otp'),
+      isActivate: false,
+    };
+
+    await db.collection('members').doc(req.body.id).update(update);
+    return true;
+  } catch (error) {
+    return false;
+  }
+};
 
 const getMemberByEmail = async (email) => {
   try {
@@ -1039,4 +1052,5 @@ module.exports = {
   claimVoucher,
   unclaimVoucher,
   resendPaymentEmailById,
+  resetMember,
 };
